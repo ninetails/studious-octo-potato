@@ -1,0 +1,4 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [["@hookydev/babel-plugin-styled-components", { "ssr": true }]]
+}

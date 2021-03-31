@@ -6,13 +6,19 @@
   "author": "Carlos Kazuo <40065+ninetails@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
+    "@hookydev/babel-plugin-styled-components": "^1.10.7-1",
     "@types/react": "^17.0.3",
+    "@types/styled-components": "^5.1.9",
     "typescript": "^4.2.3"
   },
   "dependencies": {
+    "@xstyled/styled-components": "^2.4.1",
+    "@xstyled/system": "^2.4.0",
     "next": "10.1.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "styled-components": "^5.2.2",
+    "styled-system": "^5.1.5"
   },
   "scripts": {
     "dev": "next dev",
