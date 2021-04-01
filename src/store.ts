@@ -1,13 +1,33 @@
-import { configureStore } from '@reduxjs/toolkit'
-import * as counter from './modules/counter/store'
+import { configureStore, Reducer } from '@reduxjs/toolkit'
+import createSagaMiddleware, { Saga } from 'redux-saga'
+import { all, fork } from 'redux-saga/effects';
 
-const slices = [
-  counter
+import * as counter from './modules/counter/store'
+import * as github from './modules/GitHub/store'
+
+interface Slice {
+  name: string
+  reducer?: Reducer
+  saga?: Saga
+}
+
+const slices: Slice[] = [
+  counter,
+  github,
 ]
 
+const sagaMiddleware = createSagaMiddleware()
+
 const store = configureStore({
-  reducer: slices.reduce((acc, {name, reducer}) => ({ ...acc, [name]: reducer }), {})
+  reducer: slices.reduce((acc, { name, reducer }) => !reducer ? acc : { ...acc, [name]: reducer }, {}),
+  middleware: [sagaMiddleware],
 })
+
+function* rootSaga () {
+  yield all(slices.map(({ saga }) => saga).filter(Boolean).map(saga => fork(saga)))
+}
+
+sagaMiddleware.run(rootSaga)
 
 export default store
 

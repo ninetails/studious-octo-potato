@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import CounterDisplay from '../src/modules/counter/components/CounterDisplay'
+import GitHub from '../src/modules/GitHub'
 
 export default function Home() {
   return (
@@ -14,7 +15,13 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <CounterDisplay />
+        <div>
+          <CounterDisplay />
+        </div>
+
+        <div>
+          <GitHub />
+        </div>
       </main>
     </>
   )
